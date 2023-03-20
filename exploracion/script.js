@@ -1,7 +1,108 @@
 d3.csv("astronautas.csv", d3.autoType).then((data) => {
+	let chartA = Plot.plot({
+	  marks: [
+		Plot.axisX({label: "Nacionalidad", lineWidth: 6, marginBottom: 50}),
+		Plot.dot(data, {
+			x: "nacionalidad",
+			fillOpacity: 0.4,
+		})
+	  ],
+	  
+	  width: 1000,
+	  height: 80,
+
+	});
+
+	d3.select("#chartA").append(() => chartA);
+});
+//******************************************************************************* */
+d3.csv("astronautas.csv", d3.autoType).then((data) => {
+	let chartB = Plot.plot({
+	
+	  marks: [
+		Plot.axisY({label: "Fecha Nacimiento",}),
+		Plot.axisX({label: "Nacionalidad", lineWidth: 6, marginBottom: 50}),
+		Plot.dot(data, {
+			x: "nacionalidad",
+			y: "anio_nacimiento",
+			fill: "nacionalidad",
+			fillOpacity: 0.4,
+		})
+	  ],
+	  	width: 1000,
+	  	height: 800,
+	  	x: { grid: true, nice: true, },
+    	y: { grid: true, nice: true, }
+	  
+
+	});
+
+	d3.select("#chartB").append(() => chartB);
+});
+
+//******************************************************************************* */
+
+d3.csv("astronautas.csv", d3.autoType).then((data) => {
+	let chartC = Plot.plot({
+	
+	  marks: [
+		Plot.axisY({label: "Fecha Nacimiento",}),
+		Plot.axisX({label: "Nacionalidad", lineWidth: 6, marginBottom: 50}),
+		Plot.tickY(data, {
+			x: "nacionalidad",
+			y: "anio_nacimiento",
+		})
+	  ],
+	  	width: 1000,
+	  	height: 800,
+		x: { grid: true, nice: true, },
+		y: { grid: true, nice: true, }
+	});
+
+	d3.select("#chartC").append(() => chartC);
+});
+
+//******************************************************************************* */
+
+d3.csv("astronautas.csv", d3.autoType).then((data) => {
+	let chartD = Plot.plot({
+	  marks: [
+		Plot.axisY({label: "Genero",}),
+		Plot.barX(data, {
+			y: "genero",
+			x: "mision_hs",
+		})
+	  ],
+	  
+	  width: 800,
+	  height: 80,
+
+	});
+
+	d3.select("#chartD").append(() => chartD);
+});
+
+//******************************************************************************* */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d3.csv("astronautas.csv", d3.autoType).then((data) => {
 	let chart = Plot.plot({
 	  marks: [
-		Plot.axisY({label: "Genero", lineWidth: 8, marginBottom: 50}),
+		Plot.axisY({label: "Genero", lineWidth: 8, marginBottom: 100}),
 		Plot.dot(data, {
 		  x: "edad_mision",
 		  y: "nacionalidad",
@@ -80,4 +181,29 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		height: 800,
 	})
 	d3.select('#chart4').append(() => chart4)
+})
+
+
+d3.csv('astronautas.csv', d3.autoType).then(data => {
+	let chart5 = Plot.plot({
+		marks: [
+		Plot.areaY(data.filter(d => d.nacionalidad == 'U.S.S.R/Rusia'), {
+			x: 'anio_mision',
+			y: 'mision_hs',
+			opacity: 0.3,
+			curve: 'natural'
+			
+		}),
+		],
+		line: true,
+		x: {
+		  tickFormat: 'd',
+		  ticks: 11,
+		},
+		y: {
+		  ticks: 7,
+		  grid: true,
+		},
+	})
+	d3.select('#chart5').append(() => chart5)
 })
