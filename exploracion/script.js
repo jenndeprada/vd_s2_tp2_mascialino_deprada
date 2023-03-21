@@ -67,15 +67,16 @@ d3.csv("astronautas.csv", d3.autoType).then((data) => {
 d3.csv("astronautas.csv", d3.autoType).then((data) => {
 	let chartD = Plot.plot({
 	  marks: [
-		Plot.axisY({label: "Genero",}),
+		Plot.axisY({label: "Genero", lineWidth: 6, marginLeft: 80}),
+		Plot.axisX({label: "Horas de Mision", lineWidth: 6, marginBottom: 35}),
 		Plot.barX(data, {
 			y: "genero",
 			x: "mision_hs",
 		})
 	  ],
-	  
-	  width: 800,
-	  height: 80,
+
+	  width: 700,
+	  height: 100,
 
 	});
 
@@ -84,8 +85,42 @@ d3.csv("astronautas.csv", d3.autoType).then((data) => {
 
 //******************************************************************************* */
 
+d3.csv("astronautas.csv", d3.autoType).then((data) => {
+	let chartD1 = Plot.plot({
+	  marks: [
+		Plot.axisY({label: "Genero", lineWidth: 6, marginLeft: 80}),
+		Plot.axisX({label: "Horas de Mision", lineWidth: 6, marginBottom: 35}),
+		Plot.barX(data, {
+			y: "genero",
+			x: "mision_hs",
+			fill: "nacionalidad",
+			title: "nacionalidad",
+		})
+	  ],
 
+	  width: 700,
+	  height: 100,
 
+	});
+
+	d3.select("#chartD1").append(() => chartD1);
+});
+
+//******************************************************************************* */
+
+d3.csv("astronautas.csv", d3.autoType).then((data) => {
+	let chartD2 = Plot.plot({
+		marks: [Plot.dot(data, { x: "genero", y: "mision_hs", opacity: 0.5})],
+		nice: true,
+		line: true,
+		grid: true,
+		zero: true,
+	  }) 
+
+	d3.select("#chartD2").append(() => chartD2);
+});
+
+//******************************************************************************* */
 
 
 
@@ -184,26 +219,15 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 })
 
 
+
+
+
+
 d3.csv('astronautas.csv', d3.autoType).then(data => {
-	let chart5 = Plot.plot({
-		marks: [
-		Plot.areaY(data.filter(d => d.nacionalidad == 'U.S.S.R/Rusia'), {
-			x: 'anio_mision',
-			y: 'mision_hs',
-			opacity: 0.3,
-			curve: 'natural'
-			
-		}),
-		],
-		line: true,
-		x: {
-		  tickFormat: 'd',
-		  ticks: 11,
-		},
-		y: {
-		  ticks: 7,
-		  grid: true,
-		},
+	let prueba = Plot.plot({
+		
 	})
-	d3.select('#chart5').append(() => chart5)
+	d3.select('#prueba').append(() => prueba)
 })
+
+
