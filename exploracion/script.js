@@ -79,7 +79,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		Plot.barY(data, {
 			x: 'status',
 			y: 'mision_hs',
-			title: d => d.country + '\n' + d.pop,
+			title: "nacionalidad",
 			fill: 'nacionalidad',
 			sort: 'nacionalidad' ,
 		}),
