@@ -225,9 +225,40 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
 d3.csv('astronautas.csv', d3.autoType).then(data => {
 	let prueba = Plot.plot({
-		
+		marks: [
+			Plot.axisX({label: "Ocupacion", lineWidth: 8, marginBottom: 50}),
+			Plot.axisY({label: "Horas de mision eva",}),
+			Plot.barY(data, {
+				x: 'ocupacion',
+				y: 'eva_mision_hs',
+				fill: 'genero',
+				title: "genero",
+			}),
+		],	
 	})
+
+
 	d3.select('#prueba').append(() => prueba)
 })
 
+
+
+d3.csv('astronautas.csv', d3.autoType).then(data => {
+	console.log(data);
+
+	let prueba2 = Plot.plot({
+		marks: [
+			Plot.axisX({label: "Nacionalidad", lineWidth: 3, marginBottom: 60}),
+			Plot.axisY({label: "Horas de mision eva",}),
+			Plot.barY(data, {
+				x: "nacionalidad",
+				y: "eva_mision_hs",
+				
+			}),
+		],	
+	})
+
+
+	d3.select('#prueba2').append(() => prueba2)
+})
 
