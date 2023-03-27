@@ -190,6 +190,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 			y: 'mision_hs',
 			fill: "nacionalidad",
 			
+			
 		}),
 		],
 		marginLeft: 70,
@@ -208,7 +209,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		Plot.barY(data, {
 			x: 'genero',
 			y: 'mision_hs',
-			fill: 'genero',
+			// fill: 'genero', Informacion redundante.
 		}),
 		],
 		marginLeft: 70,
