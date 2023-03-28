@@ -1,23 +1,107 @@
 
 d3.csv('astronautas.csv', d3.autoType).then(data => {
+
+	let arr = Array();
+	
+	let us_hs = 0;
+	let russia_hs = 0;
+	let canada_hs = 0;
+	let japon_hs = 0;
+	let italia_hs = 0;
+	let pbajos_hs = 0;
+	let runido_hs = 0;
+	let china_hs = 0;
+	let alemania_hs = 0;
+	let francia_hs = 0;
+	let emir_hs = 0;
+	let kaj_hs = 0;
+	let dinamarca_hs = 0;
+
+	for(i = 0; i < data.length; i++){
+		switch(data[i].nacionalidad){
+			case 'EE.UU.':
+				us_hs += data[i].mision_hs;
+				break;
+			case 'U.S.S.R/Rusia':
+				russia_hs += data[i].mision_hs;
+				break
+			case 'Canada':
+				canada_hs += data[i].mision_hs;
+				break
+			case 'Japon':
+				japon_hs+= data[i].mision_hs;
+				break
+			case 'Paises Bajos':
+				pbajos_hs += data[i].mision_hs;
+				break
+			case 'Italia':
+				italia_hs	+= data[i].mision_hs;
+				break
+			case 'Reino Unido':
+				runido_hs += data[i].mision_hs;
+				break
+			case 'China':
+				china_hs += data[i].mision_hs;
+				break
+			case 'Alemania':
+				alemania_hs += data[i].mision_hs;	
+				break		
+			case 'Francia':
+				francia_hs += data[i].mision_hs;
+				break
+			case 'Emiratos Arabes Unidos':
+				emir_hs += data[i].mision_hs;	
+				break
+			case 'Dinamarca':
+				dinamarca_hs += data[i].mision_hs;
+				break
+			default:
+				kaj_hs += data[i].mision_hs;
+				break
+		}
+	}
+
+
+	arr.push({pais: 'EE.UU.', hs_mision_por_pais: Math.round(us_hs)}, 
+			{pais: 'U.S.S.R/Rusia', hs_mision_por_pais: Math.round(russia_hs)},
+			{pais: 'Canada', hs_mision_por_pais: Math.round(canada_hs)},
+			{pais: 'Japon', hs_mision_por_pais: Math.round(japon_hs)},
+			{pais: 'Paises Bajos', hs_mision_por_pais: Math.round(pbajos_hs)},
+			{pais: 'Italia', hs_mision_por_pais: Math.round(italia_hs)},
+			{pais: 'Reino Unido', hs_mision_por_pais: Math.round(runido_hs)},
+			{pais: 'China', hs_mision_por_pais: Math.round(china_hs)},
+			{pais: 'Alemania', hs_mision_por_pais: Math.round(alemania_hs)},
+			{pais: 'Francia', hs_mision_por_pais: Math.round(francia_hs)},
+			{pais: 'Emiratos Arabes Unidos', hs_mision_por_pais: Math.round(emir_hs)},
+			{pais: 'Dinamarca', hs_mision_por_pais: Math.round(dinamarca_hs)},
+			{pais: 'Kazajistan', hs_mision_por_pais: Math.round(kaj_hs)});
+
+
 	let dataviz_1 = Plot.plot({
-		y: { grid: true, domain: d3.sort(data, (a, b) => d3.descending(a.nacionalidad, b.nacionalidad)).map(d => d.nacionalidad), },
+		
+		y: { grid: true,domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
+
+		x: { grid: true },
 		color: {
             legend: true,
+			marginLeft: 100,
           },
           
 		marks: [
 		Plot.axisX({label: "Horas de mision", lineWidth: 9, marginBottom: 50}),
-		Plot.axisY({label: "Nacionalidad", lineWidth: 9, marginBottom: 80}),
-		Plot.barX(data, {
-			x: 'mision_hs',
-			y: 'nacionalidad',
-			fill: "genero",  //Agregue mas informacion mostrando los generos
-			title: "genero" // Y para que se entienda esta info deje esto. 
-			// Estaria bueno agregarle el sorting por genero y por paises
+		Plot.axisY({label: "Nacionalidad", lineWidth: 9, }),
+		Plot.barX(arr, {
+			//x: "mision_hs",
+			//y: "nacionalidad",
+			x: "hs_mision_por_pais",
+			y: "pais",
+			//fill: data.map(d => d.ocupacion),  
+			//title: "ocupacion",
+			//sort: "ocupacion",  
+			
 		}),
 		],
-        marginLeft: 70,
+        marginLeft: 100,
 		width: 1000,
 		height: 700,
 
