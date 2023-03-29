@@ -6,23 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exploración</title>
     <style>
+      *{
+        font-family: sans-serif;
+      }
       #chart{
         overflow-y:auto;
       }
       #chart svg{
         max-width: initial;
       }
+      #legend{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 13px;
+      }
+      .item{
+        border-left: 15px solid;
+        margin: 10px;
+        padding-left: 2px;
+      }
+      .militar{
+        border-color: rgba(34, 139, 34, 0.6); /*forestgreen*/
+      }
+      .civil{
+        border-color: rgba(199, 21, 133, 0.5); /*mediumvioletred*/
+      }
+      h3{
+        font-weight: 100;
+        font-size: 18px;
+        color: #777777;
+      }
     </style>
   </head>
   <body>
 
+    <h1>Horas de misión por status</h1>
+    <h3> Cantidad de horas en misiones por año, según el status del astronauta </h3>
+    <div id="legend">
+      <div class="item militar">Militar</div>
+      <div class="item civil">Civil</div>
+    </div>
     <div id="chart6"></div>
 
-    <div id="chart2"></div>
+    <!-- <div id="chart2"></div> -->
 
     <div id="chart3"></div>
 
-    <div id="chart4"></div>
+    <!-- <div id="chart4"></div> -->
 
     <div id="chart5"></div>
 
