@@ -14,7 +14,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
     let horas_totales_dias = (total_hs_mision + total_hs_mision_eva) / 24;
 
-   //console.log(horas_totales_dias.toFixed())
+   console.log(horas_totales_dias.toFixed())
 
 
 
@@ -24,14 +24,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		marks: [
 			Plot.axisX({label: "Ocupcion", lineWidth: 8, marginBottom: 50}),
 			Plot.axisY({label: "Dias de mision", marginLeft: 100}),
-            Plot.areaY(data, {
-                x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
-                y: mision_hs_anio_c,
-                opacity: 0.6,
-                curve: 'natural',
-                fill: 'slateblue'
-                // https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
-              }),
+            Plot.rectY(data, Plot.binX({y: horas_totales_dias/100}, {x: "ocupacion", fill: "ocupacion"})).plot()
             
 		],	
 	})
@@ -39,3 +32,6 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
 	d3.select('#dataviz_3').append(() => dataviz_3)
 })
+
+
+//d3.flatGroup(penguins, d => d.species, d => d.island, d => d.sex)
