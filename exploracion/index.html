@@ -9,54 +9,80 @@
       *{
         font-family: sans-serif;
       }
-      #chart{
+      .chart{
         overflow-y:auto;
       }
-      #chart svg{
+      .chart svg{
         max-width: initial;
       }
-      #legend{
-        display: flex;
-        justify-content: flex-end;
-        font-size: 13px;
-      }
-      .item{
-        border-left: 15px solid;
-        margin: 10px;
-        padding-left: 2px;
-      }
-      .militar{
-        border-color: rgba(34, 139, 34, 0.6); /*forestgreen*/
-      }
-      .civil{
-        border-color: rgba(199, 21, 133, 0.5); /*mediumvioletred*/
-      }
+
       h3{
         font-weight: 100;
         font-size: 18px;
         color: #777777;
       }
+
+      .tag{
+        position: relative;
+        font-size: 14px;
+        font-weight: 600;
+        opacity: 0.6;
+        left: 625px;
+      }
+
+      .civil{
+        color: mediumvioletred;
+        top: 318px;
+      }
+      .militar{
+        color: forestgreen;
+        top: 285px;
+      }
+      .total{
+        color: gray;
+        top: 240px;
+      }
+      .graph{
+        margin: 40px;
+      }
+
+      .br{
+        background-color: red;
+        display: inline-block;
+        height: 50px;
+      }
     </style>
   </head>
   <body>
 
-    <h1>Horas de misión por status</h1>
-    <h3> Cantidad de horas en misiones por año, según el status del astronauta </h3>
-    <div id="legend">
-      <div class="item militar">Militar</div>
-      <div class="item civil">Civil</div>
+    <div id="graph6" class="graph">
+      <h1>Variación en el status</h1>
+      <h3> Fluctuación en el tiempo de las horas de misión, según el status de los astronautas </h3>
+      <div class="tag total">Total</div>
+      <div class="tag militar">Militar</div>
+      <div class="tag civil">Civil</div>
+      <div id="chart6" class="chart"></div>
     </div>
-    <div id="chart6"></div>
 
     <!-- <div id="chart2"></div> -->
 
-    <div id="chart3"></div>
+    <div id="graph3" class="graph">
+      <h1>Rangos de edades</h1>
+      <h3> Distribución de las edades mínimas, máximas y promedio de los astronautas </h3>
+      <div id="chart3"  class="chart"></div>
+    </div>
+    
 
     <!-- <div id="chart4"></div> -->
 
-    <div id="chart5"></div>
-
-    <div id="chart"></div>
+    <div id="graph5" class="graph">
+      <div id="chart5" class="chart"></div>
+    </div>
+    
+    <div id="graph1" class="graph">
+      <div id="chart1" class="chart"></div>
+    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>

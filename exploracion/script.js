@@ -1,6 +1,12 @@
+const locale = {
+	decimal: ',',
+	thousands: '.',
+	grouping: [3],
+}
+
 //#region edad nacionalidad
 d3.csv("astronautas.csv", d3.autoType).then((data) => {
-	let chart = Plot.plot({
+	let chart1 = Plot.plot({
 		marks: [
 			Plot.dot(data, {
 				x: "edad_mision",
@@ -14,7 +20,7 @@ d3.csv("astronautas.csv", d3.autoType).then((data) => {
 			legend: true,
 		},
 	});
-	d3.select("#chart").append(() => chart);
+	d3.select("#chart1").append(() => chart1);
 });
 //#endregion
 
@@ -41,23 +47,76 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 })
 //#endregion
 
-//#region hs mision nacionalidad
+//#ver - chart 3
+
+d3.formatDefaultLocale(locale)
+
 d3.csv('astronautas.csv', d3.autoType).then(data => {
+
+	var edad_mision = data.map(function(d) {return d.edad_mision});
+	var anio_mision = data.map(function(d) {return d.anio_mision});
+	
+	let max_edad_mision = Array(10);
+	max_edad_mision.fill(0);
+	let min_edad_mision = Array(10);
+	min_edad_mision.fill(100);
+	let avg_edad_mision = Array(10);
+	avg_edad_mision.fill(0);
+		
+	for(let anio=2010;anio<=2023;anio++){
+		for(let i=0;i<edad_mision.length;i++){
+			if(anio_mision[i] == anio){
+				
+				if(edad_mision[i] > max_edad_mision[anio-2010]){
+					max_edad_mision[anio-2010] = edad_mision[i];
+				}else if (edad_mision[i] < min_edad_mision[anio-2010]){
+					min_edad_mision[anio-2010] = edad_mision[i];
+				}
+				avg_edad_mision[anio-2010] = (avg_edad_mision[anio-2010] + edad_mision[i])/2;
+			}
+		}
+	}
+
+
 	let chart3 = Plot.plot({
 		marks: [
-			Plot.barY(data, {
-				x: 'nacionalidad',
-				y: 'mision_hs',
-				title: d => d.country + '\n' + d.pop,
-				fill: 'nacionalidad',
-				
+			Plot.areaY(data, {
+				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+				y1: max_edad_mision,
+				y2: min_edad_mision,
+				dy: -16,
+				opacity: 0.5,
+				curve: 'natural',
+				fill: 'gray',
+				// https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
+			}),
+			Plot.line(data, {
+				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+				y: avg_edad_mision,
+				stroke: 'red',
+				curve: 'natural',
+				dy: -16,
+			}),
+			Plot.dot(data, {
+				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+				y: avg_edad_mision,
+				stroke: 'red',
+				dy: -16,
 			}),
 		],
 		x: {
-			domain: d3.sort(data, (a, b) => d3.descending(a.mision_hs, b.mision_hs)).map(d => d.nacionalidad),
+			tickFormat: 'd',
+			grid: true,
+		},
+		y: {
+			tickFormat: d3.format(',.0f'),
+			grid: true,
+		},
+		color:{
+			legend: true,
 		},
 		marginLeft: 70,
-		width: 600,
+		line: true,
 	})
 	d3.select('#chart3').append(() => chart3)
 })
@@ -81,7 +140,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 })
 //#endregion
 
-//#region ststus hs nacionalidad - me gusta más el otro
+//#region ststus hs nacionalidad - me gusta más el otro - chart 5
 d3.csv('astronautas.csv', d3.autoType).then(data => {
 	let chart5 = Plot.plot({
 		marks: [
@@ -103,14 +162,15 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 })
 //#endregion
 
-//#region hs mision anio nacionalidad
+//#region hs mision anio nacionalidad - chart 6
 // config. números español
-const locale = {
-	decimal: ',',
-	thousands: '.',
-	grouping: [3],
-}
 d3.formatDefaultLocale(locale)
+
+/* PENDIENTE:
+	- cambiar la escala de horas: dividir por miles
+	- Leyenda de eje Y: "Miles de horas"
+	- Ver: usar función sum en vez del quilombo este feo de código
+*/
 
 d3.csv('astronautas.csv', d3.autoType).then(data => {
 	/*let dataABC = data.filter(
@@ -124,6 +184,8 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		mision_hs_anio_c.fill(0);
 		let mision_hs_anio_m = Array(10);
 		mision_hs_anio_m.fill(0);
+		let mision_hs_anio_tot = Array(10);
+		mision_hs_anio_tot.fill(0);
 		
 		for(let anio=2010;anio<=2023;anio++){
 			for(let i=0;i<mision_hs.length;i++){
@@ -132,17 +194,23 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 					if(mision_hs[i] > 8760){
 						if(status[i] === 'civil'){
 							mision_hs_anio_c[anio-2009] += (mision_hs[i] - 8760);
+							mision_hs_anio_tpt[anio-2009] += (mision_hs[i] - 8760);
 							mision_hs_anio_c[anio-2010] +=8760;
+							mision_hs_anio_tot[anio-2010] +=8760;
 						}else if(status[i] === 'militar'){
 							mision_hs_anio_m[anio-2009] += (mision_hs[i] - 8760);
+							mision_hs_anio_tot[anio-2009] += (mision_hs[i] - 8760);
 							mision_hs_anio_m[anio-2010] +=8760;
+							mision_hs_anio_tot[anio-2010] +=8760;
 						}
 						
 					}else{
 						if(status[i] === 'civil'){
 							mision_hs_anio_c[anio-2010] +=mision_hs[i];
+							mision_hs_anio_tot[anio-2010] +=mision_hs[i];
 						}else if(status[i] === 'militar'){
 							mision_hs_anio_m[anio-2010] +=mision_hs[i];
+							mision_hs_anio_tot[anio-2010] +=mision_hs[i];
 						}
 					}
 				}
@@ -153,22 +221,36 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		
 		let chart6 = Plot.plot({
 			marks: [
+				Plot.line(data, {
+					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+					y: (mision_hs_anio_tot),
+					opacity: 0.3,
+					curve: 'natural',
+					label: 'astronautas militares'
+				}),
 				Plot.areaY(data, {
 					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
-					y: mision_hs_anio_m,
+					y: (mision_hs_anio_m),
 					opacity: 0.6,
 					curve: 'natural',
-					fill: 'mediumvioletred',
+					fill: 'forestgreen',
 					label: 'astronautas militares'
+				}),
+				Plot.areaY(data, {
+					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+					y: mision_hs_anio_c,
+					opacity: 0.4,
+					curve: 'natural',
+					fill: 'white',
+					label: 'astronautas civiles'
 					// https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
-					
 				}),
 				Plot.areaY(data, {
 					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
 					y: mision_hs_anio_c,
 					opacity: 0.6,
 					curve: 'natural',
-					fill: 'forestgreen',
+					fill: 'mediumvioletred',
 					label: 'astronautas civiles'
 					// https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
 				}),
