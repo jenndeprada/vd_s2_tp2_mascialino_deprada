@@ -86,18 +86,21 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		style: {
 			fontSize: 17,
 		}, 
-          
+        color: {
+			legend: true,
+		  },
+
 		marks: [
 		Plot.axisY({lineWidth: 7,}),
 		
 		Plot.barX(arr, {
 			x: "hs_mision_por_pais",
 			y: "pais",
-			fill: "#a07dfe"
+			fill: data.map(d => d.ocupacion),
 			//fill: data.map(d => d.ocupacion),  
-			//title: "ocupacion",
-			//sort: "ocupacion",  
+			title: data.map(d => d.ocupacion),
 			
+			//sort: "ocupacion",  	
 		}),
 		],
         marginLeft: 150,
