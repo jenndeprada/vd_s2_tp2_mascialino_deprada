@@ -93,6 +93,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		Plot.barX(arr, {
 			x: "hs_mision_por_pais",
 			y: "pais",
+			fill: "#a07dfe"
 			//fill: data.map(d => d.ocupacion),  
 			//title: "ocupacion",
 			//sort: "ocupacion",  
