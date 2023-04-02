@@ -88,6 +88,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		}, 
         color: {
 			legend: true,
+			marginLeft: 85,
 		  },
 
 		marks: [
@@ -96,11 +97,8 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		Plot.barX(arr, {
 			x: "hs_mision_por_pais",
 			y: "pais",
-			fill: data.map(d => d.ocupacion),
-			//fill: data.map(d => d.ocupacion),  
-			title: data.map(d => d.ocupacion),
-			
-			//sort: "ocupacion",  	
+			fill: data.map(d => d.ocupacion), 
+			title: data.map(d => d.ocupacion),	
 		}),
 		],
         marginLeft: 150,
