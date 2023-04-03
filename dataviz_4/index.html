@@ -17,38 +17,6 @@
         max-width: initial;
       }
 
-      h1 {
-        text-align: center;
-      }
-      h3{
-        font-weight: 100;
-        font-size: 18px;
-        color: #777777;
-      }
-      .tag{
-        position: relative;
-        font-size: 14px;
-        font-weight: 600;
-        opacity: 0.6;
-        left: 625px;
-      }
-
-      .civil{
-        color: mediumvioletred;
-        top: 318px;
-      }
-      .militar{
-        color: forestgreen;
-        top: 285px;
-      }
-      .total{
-        color: gray;
-        top: 240px;
-      }
-      .graph{
-        margin: 40px;
-      }
-
       .br{
         background-color: red;
         display: inline-block;
@@ -87,14 +55,24 @@
 
 
 
+    <div class="container-fluid pt-5">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <h3 class="text-center pt-3 fw-semibold">Rangos de edades</h3>
+            <p class="text-center">Distribución de las edades mínimas, máximas y promedio de los astronautas</p>
+        </div>
+        <div class="col"></div>
 
-    <div id="graph3" class="graph">
-      <h1>Rangos de edades</h1>
-      <h3> Distribución de las edades mínimas, máximas y promedio de los astronautas </h3>
-      <div id="dataviz_4" class="chart"></div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <div id="dataviz_4" class="d-flex justify-content-center border"></div>  
+        </div>
+        <div class="col"></div>
+      </div>
     </div>
-    
-
 
 
 

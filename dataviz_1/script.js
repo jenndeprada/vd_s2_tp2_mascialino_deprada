@@ -79,26 +79,25 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
 	let dataviz_1 = Plot.plot({
 		
-		y: { grid: true,label: null, domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
+		y: { grid: true, label: null, domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
 
 		x: { grid: true, axis: "bottom", label: "Horas de mision", labelAnchor: "center",},
 
 		style: {
 			fontSize: 17,
 		}, 
+
         color: {
 			legend: true,
 			marginLeft: 85,
-		  },
+		},
 
 		marks: [
 		Plot.axisY({lineWidth: 7,}),
 		
 		Plot.barX(arr, {
 			x: "hs_mision_por_pais",
-			y: "pais",
-			fill: data.map(d => d.ocupacion), 
-			title: data.map(d => d.ocupacion),	
+			y: "pais",	
 		}),
 		],
         marginLeft: 150,

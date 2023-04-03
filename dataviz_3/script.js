@@ -10,15 +10,24 @@
 		marks: [
 			Plot.axisX({label: "Ocupacion", lineWidth: 8, marginBottom: 50}),
 			Plot.axisY({label: "Horas de mision eva",}),
-			Plot.barY(data, {
-				x: "ocupacion",
-				y:  "eva_mision_hs",
-				fill: "genero",
-				sort: 'genero',
-			}),
+			Plot.barY(data, 
+				Plot.groupX({ y: "sum" }, { x: "ocupacion", y: "eva_mision_hs", fill: "genero"})),
 		],	
 	})
 
 
 	d3.select('#dataviz_3').append(() => dataviz_3);
 })
+
+
+/* Plot.plot({
+	marks: [
+	  Plot.barY(
+		data,
+		Plot.groupX({ y: "sum" }, { x: "brand", y: "price_in_usd" })
+	  )
+	],
+	height: 200,
+	marginLeft: 50,
+	width: 485
+  }) */
