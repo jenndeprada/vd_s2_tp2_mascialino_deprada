@@ -35,6 +35,8 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
 	let dataviz_4 = Plot.plot({
 		marks: [
+			Plot.axisX({label: "Anos", labelAnchor: "center", marginBottom: 40}),
+			Plot.axisY({label: "Edades", marginTop: 20 }),
 			Plot.areaY(data, {
 				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
 				y1: max_edad_mision,

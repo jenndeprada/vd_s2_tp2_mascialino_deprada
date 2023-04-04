@@ -57,7 +57,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		let dataviz_2 = Plot.plot({
 			marks: [
 				//#region ejes
-				Plot.axisX({tickFormat: "", anchor: "bottom", label: "Año →" }),
+				Plot.axisX({tickFormat: "", labelAnchor: "center", anchor: "bottom", label: "Año" }),
 				Plot.axisY({anchor: "left", label: "Hs misión (miles) ↑"}),
 				//#endregion
 				//#region etiquetas izquierda
