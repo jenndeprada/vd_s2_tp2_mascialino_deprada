@@ -1,7 +1,12 @@
+const locale = {
+	decimal: ',',
+	thousands: '.',
+	grouping: [3],
+}
+
+d3.formatDefaultLocale(locale)
+
 d3.csv('astronautas.csv', d3.autoType).then(data => {
-	/*let dataABC = data.filter(
-		d => d.status == 'civil' || d.status == 'militar',
-		) //unnecesary? */
 		var mision_hs = data.map(function(d) {return d.mision_hs});
 		var anio_mision = data.map(function(d) {return d.anio_mision});
 		var status = data.map(function(d) {return d.status});
@@ -42,44 +47,83 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 				}
 			}
 		}
-		
-		/* TO DO: AÑADIR LEGEND */
-		
+
+		for (let i=0; i<10; i++){
+			mision_hs_anio_tot[i] = mision_hs_anio_tot[i]/1000;
+			mision_hs_anio_c[i] = mision_hs_anio_c[i]/1000;
+			mision_hs_anio_m[i] = mision_hs_anio_m[i]/1000;
+		}
+
 		let dataviz_2 = Plot.plot({
 			marks: [
-				Plot.line(data, {
-					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
-					y: (mision_hs_anio_tot),
-					opacity: 0.3,
-					curve: 'natural',
-					label: 'astronautas militares'
+				//#region ejes
+				Plot.axisX({tickFormat: "", anchor: "bottom", label: "Año →" }),
+				Plot.axisY({anchor: "left", label: "Hs misión (miles) ↑"}),
+				//#endregion
+				//#region etiquetas izquierda
+				Plot.text(mision_hs_anio_tot.slice(9), {
+					x: [2019],
+					y: mision_hs_anio_tot[9],
+					text: ["Total"],
+					fill: "#bcbebf",
+					fontWeight: "bold",
+					dx: 18,
+					fontSize: "15px",
 				}),
-				Plot.areaY(data, {
-					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
-					y: (mision_hs_anio_m),
-					opacity: 0.6,
-					curve: 'natural',
-					fill: 'forestgreen',
-					label: 'astronautas militares'
+				Plot.text(mision_hs_anio_m.slice(9), {
+					x: [2019],
+					y: mision_hs_anio_m[9],
+					text: ["Militar"],
+					fill: "#7ab97a",
+					fontWeight: "bold",
+					fontSize: "15px",
+					dx: 25
 				}),
+				Plot.text(mision_hs_anio_c.slice(9), {
+					x: [2019],
+					y: mision_hs_anio_c[9],
+					text: ["Civil"],
+					fill: "#bd6296",
+					fontWeight: "bold",
+					fontSize: "15px",
+					dx: 18
+				}),
+				//#endregion
+				//#region curvas
+					//#region total
+					Plot.line(data, {
+						x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+						y: (mision_hs_anio_tot),
+						opacity: 0.3,
+						curve: 'natural',
+					}),
+					//#endregion
+					//#region militar
+					Plot.areaY(data, {
+						x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+						y: (mision_hs_anio_m),
+						opacity: 0.6,
+						curve: 'natural',
+						fill: 'forestgreen',
+					}),
+					//#endregion
+					//#region civil
 				Plot.areaY(data, {
 					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
 					y: mision_hs_anio_c,
 					opacity: 0.4,
 					curve: 'natural',
 					fill: 'white',
-					label: 'astronautas civiles'
-					// https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
 				}),
 				Plot.areaY(data, {
 					x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
-					y: mision_hs_anio_c,
+					y: (mision_hs_anio_c),
 					opacity: 0.6,
 					curve: 'natural',
 					fill: 'mediumvioletred',
-					label: 'astronautas civiles'
-					// https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
 				}),
+				//#endregion
+				//#endregion
 			],
 			x: {
 				tickFormat: 'd',
@@ -91,7 +135,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 			color:{
 				legend: true,
 			},
-			marginLeft: 70,
+			marginRight: 50,
 			line: true,
 		})
 		d3.select('#dataviz_2').append(() => dataviz_2)
