@@ -1,6 +1,8 @@
 
 d3.csv('astronautas.csv', d3.autoType).then(data => {
 
+	//<!--TO DO-->
+	//<!-- Implementar sum solo si sobra tiempo -->
 	let arr = Array();
 	
 	let us_hs = 0;
