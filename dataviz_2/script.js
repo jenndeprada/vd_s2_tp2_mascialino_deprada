@@ -84,7 +84,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 				grid: true,
 			},
 			color:{
-				range: ["#ffa8df", "#a1c248"], 
+				range: ["grey", "#EE6D2F"], 
 				type: "categorical",
 				legend: true,
 			},
