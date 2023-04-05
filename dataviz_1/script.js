@@ -99,7 +99,8 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		
 		Plot.barX(arr, {
 			x: "hs_mision_por_pais",
-			y: "pais",	
+			y: "pais",
+			fill: "#EE6C2F"	
 		}),
 		],
         marginLeft: 150,
