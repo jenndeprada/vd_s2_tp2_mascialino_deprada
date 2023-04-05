@@ -45,19 +45,18 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 				opacity: 0.5,
 				curve: 'natural',
 				fill: 'gray',
-				// https://observablehq.com/@ee2dev/sorting-with-plot-a-collection-of-plot-examples
 			}),
 			Plot.line(data, {
 				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
 				y: avg_edad_mision,
-				stroke: 'red',
+				stroke: '#EE6C2F',
 				curve: 'natural',
 				dy: -16,
 			}),
 			Plot.dot(data, {
 				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
 				y: avg_edad_mision,
-				stroke: 'red',
+				stroke: '#EE6C2F',
 				dy: -16,
 			}),
 		],
