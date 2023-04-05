@@ -82,7 +82,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
 	let dataviz_1 = Plot.plot({
 		
-		y: { grid: true, label: null, domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
+		y: { grid: false, label: null, domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
 
 		x: { grid: true, axis: "bottom", label: "Miles de horas de mision", labelAnchor: "center",},
 
