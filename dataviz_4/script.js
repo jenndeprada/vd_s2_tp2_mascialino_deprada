@@ -35,7 +35,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 
 	let dataviz_4 = Plot.plot({
 		marks: [
-			Plot.axisX({label: "Anos", labelAnchor: "center", marginBottom: 40}),
+			Plot.axisX({tickFormat: "", labelAnchor: "center", anchor: "bottom", label: "Año" }),
 			Plot.axisY({label: "Edades", marginTop: 20 }),
 			Plot.areaY(data, {
 				x: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
@@ -59,6 +59,16 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 				stroke: '#EE6C2F',
 				dy: -16,
 			}),
+			Plot.text(avg_edad_mision.slice(9), {
+				x: [2019],
+				y: avg_edad_mision[9],
+				text: ["Promedio"],
+				fill: "#EE6C2F",
+				fontWeight: "bold",
+				dx: 40,
+				dy: -15,
+				fontSize: "13px",
+			}),
 		],
 		x: {
 			tickFormat: 'd',
@@ -72,6 +82,8 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 			legend: true,
 		},
 		marginLeft: 70,
+		marginRight: 70,
+		insetTop: 15,
 		line: true,
 	})
 	d3.select('#dataviz_4').append(() => dataviz_4)
