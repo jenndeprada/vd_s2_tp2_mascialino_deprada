@@ -64,26 +64,27 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 	}
 
 
-	arr.push({pais: 'EE.UU.', hs_mision_por_pais: Math.round(us_hs)}, 
-			{pais: 'U.S.S.R/Rusia', hs_mision_por_pais: Math.round(russia_hs)},
-			{pais: 'Canada', hs_mision_por_pais: Math.round(canada_hs)},
-			{pais: 'Japon', hs_mision_por_pais: Math.round(japon_hs)},
-			{pais: 'Paises Bajos', hs_mision_por_pais: Math.round(pbajos_hs)},
-			{pais: 'Italia', hs_mision_por_pais: Math.round(italia_hs)},
-			{pais: 'Reino Unido', hs_mision_por_pais: Math.round(runido_hs)},
-			{pais: 'China', hs_mision_por_pais: Math.round(china_hs)},
-			{pais: 'Alemania', hs_mision_por_pais: Math.round(alemania_hs)},
-			{pais: 'Francia', hs_mision_por_pais: Math.round(francia_hs)},
-			{pais: 'Emiratos Arabes Unidos', hs_mision_por_pais: Math.round(emir_hs)},
-			{pais: 'Dinamarca', hs_mision_por_pais: Math.round(dinamarca_hs)},
-			{pais: 'Kazajistan', hs_mision_por_pais: Math.round(kaj_hs)});
+	arr.push({pais: 'EE.UU.', hs_mision_por_pais: (Math.round(us_hs)/1000)}, 
+			{pais: 'U.S.S.R/Rusia', hs_mision_por_pais: (Math.round(russia_hs)/1000)},
+			{pais: 'Canada', hs_mision_por_pais: (Math.round(canada_hs)/1000)},
+			{pais: 'Japon', hs_mision_por_pais: (Math.round(japon_hs)/1000)},
+			{pais: 'Paises Bajos', hs_mision_por_pais: (Math.round(pbajos_hs)/1000)},
+			{pais: 'Italia', hs_mision_por_pais: (Math.round(italia_hs)/1000)},
+			{pais: 'Reino Unido', hs_mision_por_pais: (Math.round(runido_hs)/1000)},
+			{pais: 'China', hs_mision_por_pais: (Math.round(china_hs)/1000)},
+			{pais: 'Alemania', hs_mision_por_pais: (Math.round(alemania_hs)/1000)},
+			{pais: 'Francia', hs_mision_por_pais: (Math.round(francia_hs)/1000)},
+			{pais: 'Otros', hs_mision_por_pais: (Math.round(emir_hs+dinamarca_hs+kaj_hs)/1000)},
+			/* {pais: 'Emiratos Arabes Unidos', hs_mision_por_pais: (Math.round(emir_hs)/1000)},
+			{pais: 'Dinamarca', hs_mision_por_pais: (Math.round(dinamarca_hs)/1000)},
+			{pais: 'Kazajistan', hs_mision_por_pais: (Math.round(kaj_hs)/1000)} */);
 
 
 	let dataviz_1 = Plot.plot({
 		
-		y: { grid: true, label: null, domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
+		y: { grid: false, label: null, domain: d3.sort(arr, (a, b) => d3.descending(a.hs_mision_por_pais, b.hs_mision_por_pais)).map(d => d.pais), },
 
-		x: { grid: true, axis: "bottom", label: "Horas de mision", labelAnchor: "center",},
+		x: { grid: true, axis: "bottom", label: "Miles de horas de mision", labelAnchor: "center",},
 
 		style: {
 			fontSize: 17,
