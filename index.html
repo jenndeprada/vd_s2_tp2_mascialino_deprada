@@ -17,24 +17,12 @@
         max-width: initial;
       }
 
-      .br{
-        background-color: red;
-        display: inline-block;
-        height: 50px;
-      }
-
     .banner {
         position: absolute;
         display: inline-block;
     }
     .bannerText {
         position: relative;
-    }
-
-    .contactMe {
-        border-top: 2px solid #6E0E8B;
-        border-bottom: 2px solid #6E0E8B;
-        color: #6E0E8B;
     }
 
     .textHeader {
@@ -48,26 +36,6 @@
         border-radius: 10px;
     }
 
-    .footer {
-        background: #221E1C;
-        height: 100px;
-    }
-
-
-    .dividers {
-        border-top: 1px solid #6E0E8B;
-        border-bottom: 1px solid #6E0E8B;
-        border-top-width: thin;
-        border-bottom-width: thin;
-
-    }
-
-    .contactLinks {
-        color: #6E0E8B;
-        text-decoration-line: none;
-    }
-
-
     .redirecciones {
         color: transparent;
     }
@@ -79,11 +47,6 @@
     .change {
         background-color: #22201E;
         transition: all .55s ease-in-out;
-    }
-
-    .projectSection {
-        background-color: #f0f0f0;
-
     }
 
     .bannerButton:hover {
@@ -119,14 +82,14 @@
 
     <nav id="myP" class="navbar navbar-expand-lg" style="background-color: rgba(30, 30, 30, .7);">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">J&M</a>
+            <a class="navbar-brand text-white" href="#page-0">J&M</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#page-0">Exploracion</a>
+                        <a class="nav-link active text-white" aria-current="page" href="/exploracion/index.html">Exploración</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#page-1">Gráfico 1</a>
@@ -181,10 +144,12 @@
                     <iframe class="align-self-center" src="/dataviz_1/index.html" style="height: 540px; width: 700px;"></iframe>
                 </div>
             </div>
-
-            <div class="row">
+        </scroll-page>
+<!-----------------------------------------------SECCION GRAPHIC 2 ------------------------------------------------------------------>
+        <scroll-page id="page-2">
+            <div class="row pt-5">
                 <div class="col d-flex justify-content-center align-items-center">
-                    <iframe class="align-self-center" src="/dataviz_2/index.html" style="height: 600px; width: 700px;"></iframe>
+                    <iframe class="align-self-center" src="/dataviz_2/index.html" style="height: 500px; width: 600px;"></iframe>
                 </div>
                 <div class="text-center col d-flex justify-content-center align-items-center">
                     <div>
@@ -193,7 +158,9 @@
                     </div>
                 </div>
             </div>
-
+        </scroll-page>    
+<!-----------------------------------------------SECCION GRAPHIC 3 ------------------------------------------------------------------>
+        <scroll-page id="page-3">
             <div class="row">
                 <div class="col d-flex text-center justify-content-center align-items-center">
                     <div class="text-center">
@@ -202,13 +169,16 @@
                     </div>
                 </div>
                 <div class="col d-flex justify-content-center align-items-center">
-                    <iframe class="align-self-center" src="/dataviz_3/index.html" style="height: 600px; width: 700px;"></iframe>
+                    <iframe src="/dataviz_3/index.html" style="height: 460px; width: 660px;"></iframe>
                 </div>
             </div>
+        </scroll-page>    
+<!-----------------------------------------------SECCION GRAPHIC 4 ------------------------------------------------------------------>
 
+        <scroll-page id="page-4">
             <div class="row">
-                <div class="col d-flex justify-content-center align-items-center">
-                    <iframe class="align-self-center m-0 b-0 p-0" src="/dataviz_4/index.html" style="height: 600px; width: 700px;"></iframe>
+                <div class="col d-flex justify-content-center align-items-center pt-5">
+                    <iframe class="align-self-center text-center pt-5 mt-5" src="/dataviz_4/index.html" style="height: 700px; width: 700px;"></iframe>
                 </div>
                 <div class="text-center col d-flex justify-content-center align-items-center">
                     <div>
@@ -217,9 +187,7 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-            
+            </div>
         </scroll-page>
     </scroll-container>
 
