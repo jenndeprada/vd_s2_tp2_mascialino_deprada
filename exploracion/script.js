@@ -632,7 +632,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 		tickFormat: 'd',
 	  },
 	  y: {
-		tickFormat: d3.format(',.0f'),
+		//tickFormat: d3.format('0f'),
 		grid: true,
 	  },
 	  marginLeft: 70,

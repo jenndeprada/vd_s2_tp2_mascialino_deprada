@@ -86,7 +86,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 					fill: "#bd6296",
 					fontWeight: "bold",
 					fontSize: "15px",
-					dx: 18
+					dx: 18,
 				}),
 				//#endregion
 				//#region curvas
