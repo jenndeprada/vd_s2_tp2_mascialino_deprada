@@ -17,6 +17,7 @@ Este gráfico muestra el proporcional de horas de misión por año correspondien
 - Los datos fueron modificados para mostrar el porcentaje de horas de cada status por año, en lugar de la cantidad de horas en sí. Esto ayuda a ver la información proporcional, eliminando información no relevante para lo que se quiere mostrar (en este caso, la cantidad de horas)
 - Una vez más, las horas de misión se muestran en miles de horas para eliminar datos repetitivos.
 - Se resaltó la línea del 50% para facilitar la comprensión rápida del dato de interés (mayoría por cada año)
+- Lo ideal hubiera sido evitar las referencias de color arriba del gráfico, y en su lugar etiquetar cada área dentro de la misma. En este caso no se pudo, por limitaciones de nuestro conocimiento de la librería.
 
 ### Visualización 3
 
