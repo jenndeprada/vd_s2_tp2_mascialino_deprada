@@ -28,5 +28,7 @@ El tercer gráfico muestra las profesiones que más horas pasaron en misiones EV
 - La distinción por género según el color fue añadida para mostrar con más detalle qué tipos de personas llegaron a participar en actividades extravehiculares
 
 ### Visualización 4
-
-
+El último gráfico muestra información sobre las edades de los astronautas a lo largo de la última década.
+- El eje x muestra los años, ya que es más intuitivo entender el tiempo como fluyendo de izquierda a derecha, a comparación de fluyendo de abajo hacia arriba
+- Buscamos una forma de representar todos los datos de edad de forma sencilla. Finalmente decidimos por mostrar el rango entre máximos y mínimos como un área, y las edades promedio de cada año como una línea de color, de forma que resalte. De esta forma podemos, en un sólo vistazo, tener una idea de las edades de los astronautas de la última década.
+- En este caso pareció pertinente mantener la grilla de referencia, para poder entender con mayor facilidad los valores exactos.

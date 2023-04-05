@@ -42,7 +42,7 @@ d3.csv('astronautas.csv', d3.autoType).then(data => {
 				y1: max_edad_mision,
 				y2: min_edad_mision,
 				dy: -16,
-				opacity: 0.5,
+				//opacity: 0.5,
 				curve: 'natural',
 				fill: 'gray',
 			}),

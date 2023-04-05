@@ -14,6 +14,11 @@
 			Plot.barY(data, 
 				Plot.groupX({ y: "sum" }, { x: "ocupacion", y: "eva_mision_hs", fill: "genero"})),
 		],	
+		color:{
+			range: ["grey", "#EE6D2F"], 
+			type: "categorical",
+			legend: true,
+		},
 	})
 
 
